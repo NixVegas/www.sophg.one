@@ -1,0 +1,418 @@
+// ============================================================================
+//  Sophgone SG-1 — a Comic Sans homage to the 1999 StargateSG-1.com "SGC
+//  Remote Access Module". Dark-navy console, beveled panels, gradient section
+//  bars, chrome logos, a rotating Stargate + gold medallion + service seal.
+//  Body/chrome text is REAL Comic Sans MS (self-hosted); logos are chrome
+//  Impact; code stays monospace.
+// ============================================================================
+@import "reset";
+
+// --- the genuine article: Comic Sans MS, self-hosted (MS core-fonts woff2). ---
+// Declaring the family here means every visitor gets real Comic Sans, whether or
+// not they have it installed.
+@font-face {
+  font-family: "Comic Sans MS";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local("Comic Sans MS"), url("fonts/comic-sans-ms-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Comic Sans MS";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local("Comic Sans MS Bold"), local("Comic Sans MS"), url("fonts/comic-sans-ms-700.woff2") format("woff2");
+}
+// Comic Neue — deep fallback only (if the woff2 ever fails to load).
+@font-face { font-family: "Comic Neue"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/comic-neue-400.woff2") format("woff2"); }
+@font-face { font-family: "Comic Neue"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/comic-neue-700.woff2") format("woff2"); }
+@font-face { font-family: "Comic Neue"; font-weight: 400; font-style: italic;  font-display: swap; src: url("fonts/comic-neue-400i.woff2") format("woff2"); }
+
+// --- palette (late-90s military console) ---
+$navy:    #00010f;
+$panel:   #050a34;
+$panel2:  #030727;
+$bevel:   #35509f;
+$ink:     #d7e4ff;
+$cyan:    #57d7ff;
+$link:    #8ab4ff;
+$gold:    #ffcf3a;
+$red:     #e0141b;
+$orange:  #ff8a1e;
+$comic:   "Comic Sans MS", "Comic Neue", "Comic Sans", "Chalkboard SE", cursive;
+$mono:    ui-monospace, "Cascadia Code", "SF Mono", Menlo, monospace;
+$block:   "Arial Black", "Arial Bold", Impact, system-ui, sans-serif;
+
+html { background: #000008; }
+
+body {
+  font-family: $comic;
+  color: $ink;
+  background: radial-gradient(120% 80% at 50% -10%, #0b1150 0%, #01030f 60%, #000 100%);
+  min-height: 100vh;
+  padding: 10px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.sgc { max-width: 800px; margin: 0 auto; border: 3px outset $bevel; background: $navy; padding: 6px; }
+
+// ---------- shared ----------
+.bar {
+  background: linear-gradient(#4265d8 0%, #1c2f96 45%, #0b1866 100%);
+  border: 2px outset #5878e6;
+  color: #eaf1ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 3px 9px;
+  text-shadow: 0 1px 0 #00021f;
+  &.tight { text-align: center; }
+}
+.panel { border: 2px outset $bevel; background: $panel; margin-bottom: 6px; }
+.pad { padding: 8px 9px; }
+
+a { color: $link; text-decoration: none; &:hover { color: #fff; text-decoration: underline; } }
+code { font-family: $mono; font-size: 0.86em; color: $cyan; }
+pre { font-family: $mono; background: #00030f; border: 2px inset #22336e; padding: 10px; overflow-x: auto; font-size: 0.82em; line-height: 1.4; code { color: #cfe0ff; } }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// ---------- top header ----------
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  background: linear-gradient(#020725, #00010c);
+  border: 2px outset $bevel;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+}
+
+// chrome SOPHGONE wordmark
+.tb-brand { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.tb-brand .word {
+  font-family: $block;
+  font-size: 2em;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #ffffff 0%, #c7e2ff 22%, #2f86ff 47%, #0a3ba8 53%, #63a7ff 74%, #ffffff 100%);
+  background-size: 100% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  -webkit-text-stroke: 1px #04205e;
+  filter: drop-shadow(0 1px 0 #00123f) drop-shadow(0 0 7px #2b7bff);
+  animation: chrome 5s ease-in-out infinite;
+}
+@keyframes chrome { 0%, 100% { background-position: 0 0; } 50% { background-position: 0 100%; } }
+.tb-brand .tag { color: #cfe0ff; font-size: 0.5em; letter-spacing: 0.34em; margin-top: 3px; }
+
+// rotating Stargate
+.gate { width: 58px; height: 58px; flex: 0 0 auto; filter: drop-shadow(0 0 6px #1e6bff); }
+.gate .gate-ring { transform-origin: 32px 32px; animation: spin 22s linear infinite; }
+.gate use { fill: #8ea6d8; }
+.gate use.locked { fill: #ff3030; filter: drop-shadow(0 0 3px #ff0000); }
+.gate .wormhole { filter: drop-shadow(0 0 5px #35b6ff); animation: puddle 3s ease-in-out infinite; }
+@keyframes puddle { 0%, 100% { opacity: 0.92; } 50% { opacity: 0.62; } }
+
+.tb-center {
+  flex: 1 1 130px;
+  text-align: center;
+  line-height: 1.12;
+  .tb-cmd { color: $cyan; font-weight: 700; letter-spacing: 0.16em; font-size: 1.05em; text-shadow: 0 0 8px #0c4bd0; }
+  .tb-dom { color: #fff; font-weight: 700; letter-spacing: 0.12em; font-size: 1.1em; }
+  .tb-sub { color: #8fa6dd; font-size: 0.7em; letter-spacing: 0.16em; }
+}
+
+// gold command medallion
+.medal { width: 54px; height: 54px; flex: 0 0 auto; filter: drop-shadow(0 0 7px #ffb800); }
+.medal .medal-ring { transform-origin: 32px 32px; animation: spin 15s linear infinite reverse; }
+.medal .medal-txt { fill: #5a3a00; font-family: $block; font-weight: 900; font-size: 12px; }
+
+.tb-btns { display: flex; gap: 6px; }
+.tb-btn { text-align: center; font-size: 0.66em; font-weight: 700; letter-spacing: 0.06em; padding: 5px 8px; line-height: 1.05; border: 2px outset #1c7f86; }
+.tb-done { color: #6ffcd6; background: #01201c; }
+.tb-idle { color: #052; background: linear-gradient(#4ff0c0, #17a887); text-shadow: none; animation: own 1.6s ease-in-out infinite; }
+@keyframes own { 0%, 100% { box-shadow: 0 0 4px #17a887; } 50% { box-shadow: 0 0 13px #6dffcf; } }
+
+.tb-code {
+  flex-basis: 100%;
+  font-family: $mono;
+  font-size: 0.68em;
+  color: #4fd0ff;
+  background: #00000e;
+  border: 1px inset #14306a;
+  padding: 3px 7px;
+  letter-spacing: 0.04em;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+// ---------- three columns ----------
+.cols { display: flex; gap: 6px; align-items: flex-start; }
+.col.left  { flex: 0 0 25%; }
+.col.right { flex: 0 0 25%; }
+.col.main  { flex: 1 1 auto; min-width: 0; }
+
+.main > .bar { margin-bottom: 6px; }
+// shared prose typography (center-column intro + full-width briefing)
+.content {
+  h1 { color: $cyan; font-size: 1.5em; line-height: 1.15; margin: 0.2em 0 0.4em; text-shadow: 0 0 10px #0e3aa0; }
+  h2 { color: $gold; font-size: 1.2em; margin: 1.3em 0 0.4em; scroll-margin-top: 10px; }
+  h3 { color: #b9ccff; margin: 1em 0 0.3em; }
+  p { margin: 0.6em 0; }
+  ul, ol { margin: 0.6em 0 0.6em 1.3em; }
+  li { margin: 0.3em 0; }
+  hr { border: none; border-top: 1px dashed #2a3f8f; margin: 1.2em 0; }
+  a { text-decoration: underline; }
+  code { word-break: break-word; }
+}
+.main .content { border: 2px outset $bevel; background: $panel2; min-height: 300px; padding: 12px 14px; }
+
+// full-width single-column mission briefing
+.briefing { margin-top: 6px; }
+.briefing > .bar { margin-bottom: 6px; }
+.briefing .content {
+  border: 2px outset $bevel;
+  background: $panel2;
+  padding: 16px 26px 22px;
+
+  h2 { border-top: 1px dashed #1c2a63; padding-top: 0.8em; margin-top: 1.5em; }
+  h2:first-child { border-top: none; padding-top: 0; margin-top: 0.2em; }
+}
+
+.nav a { display: block; padding: 1px 0; letter-spacing: 0.02em; }
+.left .pad a { line-height: 1.7; }
+
+.commend {
+  font-size: 0.9em;
+  .sig { font-family: "Segoe Script", "Comic Sans MS", cursive; font-size: 1.9em; color: #cfe0ff; transform: skewX(-8deg); margin: 0.3em 0 -0.15em 0.3em; opacity: 0.85; }
+  .signame { font-size: 0.85em; color: #8fa6dd; }
+}
+
+// WHIRLGIRLS-slot bubble ad
+.adbox {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border: 3px outset #b23bd0;
+  background: linear-gradient(135deg, #12002b, #3a086b 50%, #b3159a);
+  padding: 15px 6px 17px;
+  animation: adglow 2.4s ease-in-out infinite;
+  &:hover { text-decoration: none; filter: brightness(1.12); }
+  .ad-k {
+    display: block;
+    font-family: $block;
+    font-weight: 900;
+    font-size: 1.75em;
+    letter-spacing: 0.04em;
+    color: #ffe23a;
+    -webkit-text-stroke: 1.5px #6b0033;
+    text-shadow: 0 0 10px #ff59d9, 2px 2px 0 #7a0044;
+  }
+  .ad-v { display: block; color: #8ffcff; font-size: 1.15em; text-shadow: 0 0 6px #14d3ff; }
+}
+@keyframes adglow { 0%, 100% { box-shadow: 0 0 6px #d21ba0; } 50% { box-shadow: 0 0 17px #ff45c8; } }
+
+// ---------- bottom status row ----------
+.statusrow { display: flex; gap: 6px; align-items: stretch; margin-top: 6px; }
+.seal { flex: 0 0 auto; border: 2px outset $bevel; background: $panel; padding: 5px; display: flex; align-items: center; justify-content: center; }
+.seal-svg { width: 104px; height: 104px; filter: drop-shadow(0 0 6px #1b3fae); }
+.seal-svg .seal-rot { transform-origin: 60px 60px; animation: spin 40s linear infinite; }
+.seal-svg .seal-ct { fill: #bcd0ff; font-size: 8.4px; font-weight: 700; letter-spacing: 0.5px; }
+.seal-svg .seal-big  { fill: $gold; font-family: $block; font-weight: 900; font-size: 25px; }
+.seal-svg .seal-big2 { fill: $gold; font-family: $block; font-weight: 900; font-size: 19px; }
+
+.bars {
+  flex: 0 0 34%;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  background: #180000;
+  border: 2px inset #5a0d0d;
+  padding: 6px 5px;
+  span { flex: 1; background: linear-gradient(#ff6a6a, #b60000); box-shadow: 0 0 4px #ff2a2a; }
+  span:nth-child(1) { height: 40%; }  span:nth-child(2) { height: 70%; }
+  span:nth-child(3) { height: 55%; }  span:nth-child(4) { height: 90%; }
+  span:nth-child(5) { height: 35%; }  span:nth-child(6) { height: 65%; }
+  span:nth-child(7) { height: 100%; } span:nth-child(8) { height: 50%; }
+  span:nth-child(9) { height: 80%; }  span:nth-child(10) { height: 45%; }
+  span:nth-child(11) { height: 72%; } span:nth-child(12) { height: 38%; }
+  span:nth-child(13) { height: 60%; } span:nth-child(14) { height: 85%; }
+  span:nth-child(15) { height: 48%; }
+}
+.monitor {
+  flex: 1 1 auto;
+  border: 2px outset $bevel;
+  background: $panel;
+  min-width: 0;
+  .mon { text-align: center; }
+  .mon-big { color: $orange; font-weight: 700; font-size: 1.15em; letter-spacing: 0.02em; text-shadow: 0 0 8px #b34a00; margin-bottom: 4px; }
+  .mon a { color: #ff8a1e; text-decoration: underline; }
+}
+
+.legal { margin-top: 8px; padding: 8px 10px 4px; text-align: center; font-size: 0.72em; color: #6f83bb; a { color: #8ea6dd; } }
+
+// ---------- Nix badge field asset ----------
+.badge-panel .bar { background: linear-gradient(#3a6fd8 0%, #1c5296 45%, #0b2a66 100%); }
+.badge90s {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 3px ridge #7ebae4;
+  box-shadow: 0 0 8px #2b6fd0, inset 0 0 0 1px #04122f;
+}
+.badge-cap { font-size: 0.75em; color: #9fb4dd; margin-top: 5px; line-height: 1.35; strong { color: #cfe0ff; } }
+
+// ---------- Nix web shrine (official branding logomark + 88x31 buttons) ----------
+.shrine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+  margin-top: 6px;
+  padding: 9px 8px;
+  border: 2px outset $bevel;
+  background: linear-gradient(#050c34, #02061e);
+}
+.nixflake { animation: spin 26s linear infinite; filter: drop-shadow(0 0 5px #7ebae4); }
+.shrine-txt { color: #bcd4ff; strong { color: #7ebae4; text-shadow: 0 0 6px #5277c3; } }
+.buttons88 { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; flex-basis: 100%; }
+.b88 {
+  width: 88px;
+  height: 31px;
+  border: 1px outset #888;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-align: center;
+  line-height: 1.02;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  overflow: hidden;
+  &:hover { text-decoration: none; filter: brightness(1.12); }
+  img { display: inline; }
+}
+.b-nixos    { background: linear-gradient(135deg, #7ebae4, #5277c3); color: #fff; text-shadow: 0 1px 1px #204; font-size: 11px; }
+.b-vegas    { background: #000; color: #ffdf20; border-color: #ffdf20; text-shadow: 0 0 5px #ff0; font-size: 11px; letter-spacing: 0.04em; }
+.b-flake    { background: #071233; color: #7ebae4; border-color: #35509f; }
+.b-netscape { background: linear-gradient(#0a6b0a, #012c01); color: #dfffdf; }
+.b-res      { background: linear-gradient(#cfcfcf, #7a7a7a); color: #111; text-shadow: 0 1px 0 #eee; font-size: 10px; }
+
+// ---------- tagline banner ----------
+.tagline {
+  margin-bottom: 6px;
+  padding: 9px 10px;
+  text-align: center;
+  border: 2px outset $bevel;
+  background: linear-gradient(#0d1f72, #061040 60%, #030a2c);
+  color: #eaf4ff;
+  font-weight: 700;
+  font-size: 1.35em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px #2b7bff, 0 1px 0 #00021f;
+  animation: taglineglow 3s ease-in-out infinite;
+}
+@keyframes taglineglow {
+  0%, 100% { box-shadow: inset 0 0 12px #0c327f; }
+  50% { box-shadow: inset 0 0 22px #2166e0, 0 0 8px #1e6bff; }
+}
+
+// ---------- marquee ticker ----------
+.ticker {
+  display: block;
+  margin-bottom: 6px;
+  padding: 3px 0;
+  border: 2px inset #22336e;
+  background: #00000e;
+  color: $gold;
+  font-weight: 700;
+  font-size: 0.86em;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 6px #b98a00;
+}
+
+// ---------- big badge feature (center) ----------
+.badge-feature {
+  max-width: 300px;
+  margin: 0 auto 14px;
+  text-align: center;
+  figcaption { font-size: 0.78em; color: #9fb4dd; margin-top: 5px; line-height: 1.35; strong { color: #cfe0ff; } }
+}
+
+// ---------- under-construction panel ----------
+.uc-body { text-align: center; }
+.uc-gif { display: block; width: 100%; height: auto; border: 2px inset #7a5a00; }
+.uc-cap { font-size: 0.76em; color: #9fb4dd; margin-top: 6px; line-height: 1.35; strong { color: $gold; } }
+
+// ---------- blink ----------
+.blink { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+// ---------- louder shrine + hit counter ----------
+.shrine-txt { font-size: 1.05em; }
+.hitcounter { flex-basis: 100%; text-align: center; margin-top: 2px; color: #9fb4dd; font-size: 0.8em; }
+.hc-label { vertical-align: middle; }
+.hc-digits {
+  display: inline-flex;
+  gap: 2px;
+  margin-left: 6px;
+  vertical-align: middle;
+  b { background: #000d05; color: #23ff5e; font-family: $mono; font-weight: 700; font-size: 1.3em; padding: 1px 4px; border: 1px inset #063; text-shadow: 0 0 6px #0f6; }
+}
+.b-arm   { background: linear-gradient(#0a3f6e, #021d3a); color: #7fd6ff; }
+.b-riscv { background: linear-gradient(#2a1f5e, #0d0730); color: #c9b6ff; }
+.b-y2k   { background: linear-gradient(#6b0a0a, #2c0101); color: #ffd0d0; }
+
+// ---------- HOT SINGLE-CORE CHIPS ad ----------
+.chipad {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border: 3px ridge #ff2fb0;
+  background: linear-gradient(160deg, #2a0018, #64003a 55%, #b3008f);
+  padding: 8px 6px 9px;
+  margin-bottom: 6px;
+  animation: chipflash 0.7s steps(2, jump-none) infinite;
+  &:hover { text-decoration: none; filter: brightness(1.1); }
+  .chipad-hd {
+    display: block;
+    font-family: $block;
+    font-weight: 900;
+    font-size: 1.02em;
+    line-height: 1.03;
+    color: #fff;
+    text-shadow: 0 0 8px #ff59d9, 1px 1px 0 #500;
+    text-transform: uppercase;
+  }
+  .chipad-sub { display: block; color: #ffe23a; font-size: 0.82em; margin-top: 3px; }
+  .chipad-price { display: block; color: #6dff6d; font-weight: 700; font-size: 0.94em; margin-top: 2px; text-shadow: 0 0 6px #0f0; }
+  .chipad-cta { display: block; margin-top: 5px; padding: 2px; background: #ffdf20; color: #b00030; font-weight: 900; font-size: 0.82em; border: 2px outset #fff36b; letter-spacing: 0.02em; }
+}
+@keyframes chipflash {
+  0%   { box-shadow: 0 0 6px #ff2fb0; border-color: #ff2fb0; }
+  100% { box-shadow: 0 0 16px #ffe23a; border-color: #ffe23a; }
+}
+
+// ---------- responsive ----------
+@media (max-width: 660px) {
+  .cols { flex-direction: column; }
+  .col.left, .col.right, .col.main { flex: 1 1 auto; width: 100%; }
+  .statusrow { flex-wrap: wrap; }
+  .bars { flex-basis: 100%; height: 60px; }
+  .monitor { flex-basis: 100%; }
+}
+
+// Respect reduced-motion: kill the spins/pulses.
+@media (prefers-reduced-motion: reduce) {
+  .gate-ring, .medal-ring, .seal-rot, .tb-brand .word, .tb-idle, .adbox, .wormhole, .nixflake, .tagline, .blink, .chipad { animation: none; }
+}
