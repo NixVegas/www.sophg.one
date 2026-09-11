@@ -11,6 +11,11 @@ ROMs, then chainloads NixOS on whichever core the GPIO strap selects. One image,
 no per-core reflash, and it walks straight through every level of secure boot the
 silicon offers.
 
+## Demo
+
+<div id="arm-demo"></div>
+<div id="riscv-demo"></div>
+
 ## The flaw
 
 The mask ROM copies the FIP's `BL2` image using an attacker-controlled, unbounded

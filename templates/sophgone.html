@@ -231,4 +231,11 @@
     </footer>
 
   </div>
+
+  <link rel="stylesheet" type="text/css" href="/asciinema/asciinema-player.css" />
+  <script src="/asciinema/asciinema-player.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    AsciinemaPlayer.create('/asciinema/cast/arm.cast', document.getElementById('arm-demo'));
+    AsciinemaPlayer.create('/asciinema/cast/riscv.cast', document.getElementById('riscv-demo'));
+  </script>
 {% endblock body %}
