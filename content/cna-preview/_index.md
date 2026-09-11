@@ -1,5 +1,6 @@
 +++
 title = "Sophgone SG-1"
+template = "sophgone.html"
 +++
 
 ## One file. Two architectures. Zero secure boot.

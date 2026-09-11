@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+{% block body %}
+  <div class="sgc">
+
+    <!-- ============ TOP HEADER: SGC REMOTE ACCESS MODULE ============ -->
+    <header class="topbar">
+      <div class="tb-brand">
+        <span class="word" data-text="SOPHGONE">SOPHGONE</span>
+        <span class="tag">NO LIMITS</span>
+      </div>
+
+      <!-- rotating Stargate emblem -->
+      <svg class="gate" viewBox="0 0 64 64" role="img" aria-label="Stargate">
+        <defs>
+          <radialGradient id="wh" cx="50%" cy="45%" r="62%">
+            <stop offset="0%" stop-color="#e6faff" />
+            <stop offset="45%" stop-color="#33b6ff" />
+            <stop offset="100%" stop-color="#03215f" />
+          </radialGradient>
+          <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#b9c9ea" />
+            <stop offset="50%" stop-color="#3a4f80" />
+            <stop offset="100%" stop-color="#111a38" />
+          </linearGradient>
+          <path id="chev" d="M32 2.4 l3.6 6.8 h-7.2 z" />
+        </defs>
+        <g class="gate-ring">
+          <circle cx="32" cy="32" r="27" fill="none" stroke="url(#stone)" stroke-width="7" />
+          <use href="#chev" class="locked" transform="rotate(0 32 32)" />
+          <use href="#chev" transform="rotate(40 32 32)" />
+          <use href="#chev" transform="rotate(80 32 32)" />
+          <use href="#chev" transform="rotate(120 32 32)" />
+          <use href="#chev" transform="rotate(160 32 32)" />
+          <use href="#chev" transform="rotate(200 32 32)" />
+          <use href="#chev" transform="rotate(240 32 32)" />
+          <use href="#chev" transform="rotate(280 32 32)" />
+          <use href="#chev" transform="rotate(320 32 32)" />
+        </g>
+        <circle class="wormhole" cx="32" cy="32" r="20.5" fill="url(#wh)" />
+      </svg>
+
+      <div class="tb-center">
+        <div class="tb-cmd">SOPHGONE COMMAND</div>
+        <div class="tb-sub">MASK-ROM LOCAL ACCESS MODULE</div>
+      </div>
+
+      <!-- ornate gold command medallion -->
+      <svg class="medal" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <radialGradient id="gold" cx="50%" cy="38%" r="68%">
+            <stop offset="0%" stop-color="#fff7d0" />
+            <stop offset="45%" stop-color="#ffcf3a" />
+            <stop offset="100%" stop-color="#7d5100" />
+          </radialGradient>
+        </defs>
+        <circle class="medal-ring" cx="32" cy="32" r="28" fill="none"
+          stroke="#ffd956" stroke-width="4" stroke-dasharray="2.5 4.3" />
+        <circle cx="32" cy="32" r="21" fill="url(#gold)" stroke="#6b4600" stroke-width="2" />
+        <circle cx="32" cy="32" r="21" fill="none" stroke="#fff4bf" stroke-width="0.8" opacity="0.7" />
+        <text x="32" y="38" text-anchor="middle" class="medal-txt">SGC</text>
+      </svg>
+
+      <div class="tb-btns">
+        <div class="tb-btn tb-done">MISSION<br />COMPLETE</div>
+        <div class="tb-btn tb-idle">DEVICE<br />OWNED</div>
+      </div>
+
+      <div class="tb-code">0C000100&nbsp;&nbsp;&nbsp;1400006F&nbsp;&nbsp;&nbsp;4013E178&nbsp;&nbsp;&nbsp;BL2_IMG_SIZE=FFFFFFFF&nbsp;&nbsp;&nbsp;VRK4.VBK.DK4.VCC.PE.BS.J.PWNED</div>
+    </header>
+
+    <!-- ============ TAGLINE + MARQUEE ============ -->
+    <div class="tagline">ONE FILE, TWO ARCHITECTURES, ZERO SECURE BOOT</div>
+    <marquee class="ticker" scrollamount="6" direction="left">
+      &#9733; WELCOME TO SOPHGONE COMMAND &#9733; ONE POLYGLOT fip.bin PWNS BOTH CORES AT ONCE &#9733; A53 (aarch64) + C906 (RISC-V) &#9733; SAME FILE, EITHER CORE, STRAP-SELECTED &#9733; A MASK-ROM CHAINLOADER THAT RUNS BEFORE ANY VERIFY &#9733; VRK4.VBK.DK4.VCC.PE.BS.J.PWNED &#9733; CHEVRON SEVEN, LOCKED &#9733;
+    </marquee>
+
+    <!-- ============ THREE COLUMNS ============ -->
+    <div class="cols">
+
+      <!-- LEFT -->
+      <aside class="col left">
+        <section class="panel">
+          <h2 class="bar">SYSTEM UPDATES</h2>
+          <div class="pad">
+            <a href="#">NEW MASK-ROM DUMPS</a><br />
+            <a href="#">DESKTOP BACKGROUNDS</a><br />
+            <a href="#">SGC EMAIL SYSTEM</a>
+          </div>
+        </section>
+        <a class="chipad" href="#">
+          <span class="chipad-hd">HOT SINGLE-CORE LINUX CHIPS IN YOUR AREA</span>
+          <span class="chipad-sub">lonely cores want to <span class="blink">MEET YOU</span></span>
+          <span class="chipad-price">ONLY 1 $STRK / call</span>
+          <span class="chipad-cta">&#9658;&#9658; CLICK HERE NOW &#9668;&#9668;</span>
+        </a>
+        <section class="panel">
+          <h2 class="bar">COMMENDATION</h2>
+          <div class="pad commend">
+            <p>
+              2026-09-04, congratulations to the members of
+              <a href="#">SG-2000 (Offensive)</a>. Your service
+              defeating the mask ROM&rsquo;s secure boot over the past week was
+              outstanding. All <a href="#">SG-2000</a> members were granted a
+              10&#8209;point commendation bonus. Keep up the great work!
+            </p>
+            <p class="sig">G. Hammond</p>
+            <p class="signame">George S. Hammond, General USAF</p>
+          </div>
+        </section>
+      </aside>
+
+      <!-- CENTER -->
+      <main class="col main">
+        <h2 class="bar">{% block heading %}HELP USING THE SGC{% endblock heading %}</h2>
+        <div class="pad content intro">
+          <h1>Welcome, SG-2000.</h1>
+          <p><strong>SECURITY DISCLOSURE.</strong> Sophgo SG2000 / CV181x mask ROM.</p>
+          <p>A single strap-selectable polyglot <code>fip.bin</code> pwns both cores of the SG2000 at once, walking through every level of secure boot the silicon has. Full briefing below.</p>
+          <figure class="badge-feature">
+            <img class="badge90s" src="{{ get_url(path='img/nix-badge-v2.gif') }}" width="320" height="427" alt="Nix badge v2, where the mask ROM cracked" />
+            <figcaption>EXHIBIT A. The <strong>Nix badge v2</strong> (nix.vegas). The mask-ROM flaw surfaced while we brought this board up.</figcaption>
+          </figure>
+        </div>
+      </main>
+
+      <!-- RIGHT -->
+      <nav class="col right">
+        <section class="panel">
+          <h2 class="bar">NAVIGATION</h2>
+          <div class="pad nav">
+            <a href="{{ config.base_url }}">SGC HOME</a>
+            <a href="#the-flaw">THE FLAW</a>
+            <a href="#mask-rom-re">MASK-ROM RE</a>
+            <a href="#the-chainloader">THE CHAINLOADER</a>
+            <a href="#timeline">TIMELINE</a>
+            <a href="#security-advisory">SECURITY ADVISORY</a>
+            <a href="#downloads">DOWNLOADS</a>
+            <a href="#how-we-found-it">REPORT FOR DUTY</a>
+            <a href="#security-advisory">CONTACT SGC</a>
+            <a href="#">LOGIN\LOGOUT</a>
+          </div>
+        </section>
+        <section class="panel uc-panel">
+          <h2 class="bar tight">SITE STATUS</h2>
+          <div class="pad uc-body">
+            <img class="uc-gif" src="{{ get_url(path='img/under-construction.gif') }}" width="380" height="46" alt="Under construction" />
+            <p class="uc-cap">This corner of the SGC is <strong>under construction</strong>. Check back for the full briefing.</p>
+          </div>
+        </section>
+        <a class="adbox" href="#">
+          <span class="ad-k">CHEVRON&nbsp;7</span>
+          <span class="ad-v">&hellip;locked!</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- ============ FULL-WIDTH MISSION BRIEFING ============ -->
+    <section class="briefing">
+      <h2 class="bar">MISSION BRIEFING</h2>
+      <div class="pad content prose">
+        {% block content %}{{ section.content | safe }}{% endblock content %}
+      </div>
+    </section>
+
+    <!-- ============ BOTTOM STATUS ROW ============ -->
+    <div class="statusrow">
+      <div class="seal">
+        <svg class="seal-svg" viewBox="0 0 120 120" aria-label="SG-2000 Special Service Status">
+          <defs>
+            <path id="sealring" d="M60 60 m-45 0 a45 45 0 1 1 90 0 a45 45 0 1 1 -90 0" />
+            <radialGradient id="sealg" cx="50%" cy="38%" r="70%">
+              <stop offset="0%" stop-color="#25409f" />
+              <stop offset="100%" stop-color="#04061c" />
+            </radialGradient>
+          </defs>
+          <circle cx="60" cy="60" r="57" fill="#04061c" stroke="#7f97e0" stroke-width="2" />
+          <circle cx="60" cy="60" r="52" fill="none" stroke="#39519f" stroke-width="1" />
+          <g class="seal-rot">
+            <text class="seal-ct">
+              <textPath href="#sealring" startOffset="0">&#9670; SG-2000 &#9670; SPECIAL SERVICE STATUS &#9670; SG-2000 &#9670; SPECIAL SERVICE STATUS </textPath>
+            </text>
+          </g>
+          <circle cx="60" cy="60" r="35" fill="url(#sealg)" stroke="#5f79d0" stroke-width="1.5" />
+          <text x="60" y="55" text-anchor="middle" class="seal-big">SG</text>
+          <text x="60" y="78" text-anchor="middle" class="seal-big2">2000</text>
+        </svg>
+      </div>
+      <div class="bars" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="monitor">
+        <h2 class="bar">PERSONAL STATUS MONITOR</h2>
+        <div class="pad mon">
+          <p class="mon-big">SECURE-BOOT BYPASS GRANTED</p>
+          <p>
+            SOME FUSES ARE OFF-LIMITS TO <a href="#">UNSIGNED</a> FIRMWARE.<br />
+            CLICK <a href="#">HERE</a> FOR MORE INFORMATION
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ NIX WEB SHRINE ============ -->
+    <div class="shrine">
+      <img class="nixflake" src="{{ get_url(path='img/nix-snowflake.svg') }}" width="46" height="46" alt="Nix" />
+      <span class="shrine-txt">reproducibly built with <strong>Nix</strong> <span class="blink">&#10052;</span></span>
+      <div class="buttons88">
+        <span class="b88 b-nixos"><img src="{{ get_url(path='img/nix-snowflake.svg') }}" width="19" height="19" alt="" />NixOS</span>
+        <a class="b88 b-vegas" href="https://nix.vegas">nix.vegas</a>
+        <span class="b88 b-flake">made with<br />&#10052; nix flakes</span>
+        <span class="b88 b-arm">ARM<br />INSIDE</span>
+        <span class="b88 b-riscv">RISC-V<br />INSIDE</span>
+        <span class="b88 b-netscape">BEST VIEWED IN<br />NETSCAPE&nbsp;4</span>
+        <span class="b88 b-y2k">Y2K<br />READY</span>
+        <span class="b88 b-res">800&times;600</span>
+      </div>
+      <div class="hitcounter">
+        <span class="hc-label">You are SGC visitor number</span>
+        <span class="hc-digits"><b>0</b><b>0</b><b>1</b><b>3</b><b>3</b><b>7</b></span>
+      </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="legal">
+      &copy; 2026 sophgone. A parody
+      homage to the 1999 StargateSG-1.com &ldquo;SGC Remote Access Module.&rdquo; Not
+      affiliated with, endorsed by, or connected to MGM, Showtime, or Stargate SG&#8209;1&trade;
+      (&copy; MGM). No spacegates were harmed. Chevron seven, locked.
+    </footer>
+
+  </div>
+{% endblock body %}
