@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <meta name="description" content="{{ config.description }}" />
+
+    {# Zola compiles sass/style.scss to /style.css (compile_sass in config.toml). #}
+    <link rel="stylesheet" type="text/css" href="{{ get_url(path='style.css') }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ get_url(path='img/nix-snowflake.svg') }}" />
+
+    {# A disclosure page gets linked around, so give it a real card. #}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ config.title }}" />
+    <meta property="og:description" content="{{ config.description }}" />
+    <meta property="og:url" content="{{ config.base_url }}" />
+    <meta name="twitter:card" content="summary" />
+  </head>
+
+  <body>
+    {#
+      Two shapes of page inherit from here:
+        * sophgone.html overrides `body` outright -- it draws the whole SGC
+          console chrome and puts the section content inside it.
+        * index.html overrides only `content`, and gets the bare default.
+      Nesting `content` inside `body` lets both work without a second base.
+    #}
+    {% block body %}{% block content %}{% endblock content %}{% endblock body %}
+  </body>
+</html>
