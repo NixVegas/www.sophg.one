@@ -6,7 +6,7 @@
     <header class="topbar">
       <div class="tb-brand">
         <span class="word" data-text="SOPHGONE">SOPHGONE</span>
-        <span class="tag">NO LIMITS</span>
+        <span class="tag">IMMUTABLE MEANS BROKEN FOREVER ❤️</span>
       </div>
 
       <!-- rotating Stargate emblem -->
@@ -64,14 +64,12 @@
         <div class="tb-btn tb-done">MISSION<br />COMPLETE</div>
         <div class="tb-btn tb-idle">DEVICE<br />OWNED</div>
       </div>
-
-      <div class="tb-code">0C000100&nbsp;&nbsp;&nbsp;1400006F&nbsp;&nbsp;&nbsp;4013E178&nbsp;&nbsp;&nbsp;BL2_IMG_SIZE=FFFFFFFF&nbsp;&nbsp;&nbsp;VRK4.VBK.DK4.VCC.PE.BS.J.PWNED</div>
     </header>
 
     <!-- ============ TAGLINE + MARQUEE ============ -->
     <div class="tagline">ONE FILE, TWO ARCHITECTURES, ZERO SECURE BOOT</div>
     <marquee class="ticker" scrollamount="6" direction="left">
-      &#9733; WELCOME TO SOPHGONE COMMAND &#9733; ONE POLYGLOT fip.bin PWNS BOTH CORES AT ONCE &#9733; A53 (aarch64) + C906 (RISC-V) &#9733; SAME FILE, EITHER CORE, STRAP-SELECTED &#9733; A MASK-ROM CHAINLOADER THAT RUNS BEFORE ANY VERIFY &#9733; VRK4.VBK.DK4.VCC.PE.BS.J.PWNED &#9733; CHEVRON SEVEN, LOCKED &#9733;
+      &#9733; WELCOME TO SOPHGONE COMMAND &#9733; ONE fip.bin PWNS BOTH CORES AT ONCE &#9733; A53 (aarch64) + C906 (RISC-V) &#9733; VRK4.VBK.DK4.VCC.PE.BS.J.PWNED &#9733; CHEVRON SEVEN, LOCKED &#9733; IT'S BROKEN FOREVER &#9733;
     </marquee>
 
     <!-- ============ THREE COLUMNS ============ -->
@@ -87,7 +85,7 @@
             <a href="#">SGC EMAIL SYSTEM</a>
           </div>
         </section>
-        <a class="chipad" href="#">
+        <a class="chipad" href="https://lcsc.com" target="_blank">
           <span class="chipad-hd">HOT SINGLE-CORE LINUX CHIPS IN YOUR AREA</span>
           <span class="chipad-sub">lonely cores want to <span class="blink">MEET YOU</span></span>
           <span class="chipad-price">ONLY 1 $STRK / call</span>
@@ -115,10 +113,10 @@
         <div class="pad content intro">
           <h1>Welcome, SG-2000.</h1>
           <p><strong>SECURITY DISCLOSURE.</strong> Sophgo SG2000 / CV181x mask ROM.</p>
-          <p>A single strap-selectable polyglot <code>fip.bin</code> pwns both cores of the SG2000 at once, walking through every level of secure boot the silicon has. Full briefing below.</p>
+          <p>A single strap-selectable polyglot <code>fip.bin</code> pwns both cores of the SG2000 at once, obliterating every level of secure boot the silicon has. Is this the first bootloader unlock for two architectures at once? Full briefing below.</p>
           <figure class="badge-feature">
             <img class="badge90s" src="{{ get_url(path='img/nix-badge-v2.gif') }}" width="320" height="427" alt="Nix badge v2, where the mask ROM cracked" />
-            <figcaption>EXHIBIT A. The <strong>Nix badge v2</strong> (nix.vegas). The mask-ROM flaw surfaced while we brought this board up.</figcaption>
+            <figcaption>EXHIBIT A. The <strong>Nix Badge v2</strong> (nix.vegas). The mask-ROM flaw surfaced while we brought this board up.</figcaption>
           </figure>
         </div>
       </main>
@@ -128,10 +126,10 @@
         <section class="panel">
           <h2 class="bar">NAVIGATION</h2>
           <div class="pad nav">
-            <a href="{{ config.base_url }}">SGC HOME</a>
+            <a href="#one-file-two-architectures-zero-secure-boot">SGC HOME</a>
+            <a href="#demo">DEMO</a>
             <a href="#the-flaw">THE FLAW</a>
-            <a href="#mask-rom-re">MASK-ROM RE</a>
-            <a href="#the-chainloader">THE CHAINLOADER</a>
+            <a href="#mask-rom-re">MASK ROM RE</a>
             <a href="#timeline">TIMELINE</a>
             <a href="#security-advisory">SECURITY ADVISORY</a>
             <a href="#downloads">DOWNLOADS</a>
@@ -207,7 +205,7 @@
       <img class="nixflake" src="{{ get_url(path='img/nix-snowflake.svg') }}" width="46" height="46" alt="Nix" />
       <span class="shrine-txt">reproducibly built with <strong>Nix</strong> <span class="blink">&#10052;</span></span>
       <div class="buttons88">
-        <span class="b88 b-nixos"><img src="{{ get_url(path='img/nix-snowflake.svg') }}" width="19" height="19" alt="" />NixOS</span>
+        <a class="b88 b-nixos" href="https://nixos.org"><img src="{{ get_url(path='img/nix-snowflake.svg') }}" width="19" height="19" alt="" />NixOS</a>
         <a class="b88 b-vegas" href="https://nix.vegas">nix.vegas</a>
         <span class="b88 b-flake">made with<br />&#10052; nix flakes</span>
         <span class="b88 b-arm">ARM<br />INSIDE</span>
@@ -224,10 +222,7 @@
 
     <!-- ============ FOOTER ============ -->
     <footer class="legal">
-      &copy; 2026 sophgone. A parody
-      homage to the 1999 StargateSG-1.com &ldquo;SGC Remote Access Module.&rdquo; Not
-      affiliated with, endorsed by, or connected to MGM, Showtime, or Stargate SG&#8209;1&trade;
-      (&copy; MGM). No spacegates were harmed. Chevron seven, locked.
+      No spacegates were harmed. Some SG-2000s may have been, though.
     </footer>
 
   </div>
@@ -235,7 +230,12 @@
   <link rel="stylesheet" type="text/css" href="/asciinema/asciinema-player.css" />
   <script src="/asciinema/asciinema-player.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-    AsciinemaPlayer.create('/asciinema/cast/arm.cast', document.getElementById('arm-demo'));
-    AsciinemaPlayer.create('/asciinema/cast/riscv.cast', document.getElementById('riscv-demo'));
+      const opts = {cols: 100, rows: 80, autoplay: true, speed: 1, pauseOnMarkers: true};
+      AsciinemaPlayer.create(
+        '/asciinema/cast/arm.cast', document.getElementById('arm-demo'),
+        {...opts, markers: [3.6]});
+      AsciinemaPlayer.create(
+        '/asciinema/cast/riscv.cast', document.getElementById('riscv-demo'),
+        {...opts, markers: [3.75]});
   </script>
 {% endblock body %}

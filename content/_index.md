@@ -87,9 +87,7 @@ definitely found out.
 - **Mitigation.** None in the ROM. Downstream measures (physically restricting
   boot media, chip-level attestation of later stages) are the only levers.
 
-## Downloads
+## Source
 
-Proof-of-concept artifacts, the reproduction harness, and the full technical
-write-up are forthcoming. Check back, or watch this space.
+https://github.com/NixVegas/sophgone
 
-*Chevron seven, locked.*

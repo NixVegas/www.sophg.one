@@ -109,7 +109,7 @@ pre { font-family: $mono; background: #00030f; border: 2px inset #22336e; paddin
   animation: chrome 5s ease-in-out infinite;
 }
 @keyframes chrome { 0%, 100% { background-position: 0 0; } 50% { background-position: 0 100%; } }
-.tb-brand .tag { color: #cfe0ff; font-size: 0.5em; letter-spacing: 0.34em; margin-top: 3px; }
+.tb-brand .tag { color: #cfe0ff; font-size: 0.5em; letter-spacing: 0.15em; margin-top: 3px; }
 
 // rotating Stargate
 .gate { width: 58px; height: 58px; flex: 0 0 auto; filter: drop-shadow(0 0 6px #1e6bff); }
@@ -172,6 +172,10 @@ pre { font-family: $mono; background: #00030f; border: 2px inset #22336e; paddin
   code { word-break: break-word; }
 }
 .main .content { border: 2px outset $bevel; background: $panel2; min-height: 300px; padding: 12px 14px; }
+
+.demo {
+  width: 50%;
+}
 
 // full-width single-column mission briefing
 .briefing { margin-top: 6px; }
@@ -317,7 +321,6 @@ pre { font-family: $mono; background: #00030f; border: 2px inset #22336e; paddin
   color: #eaf4ff;
   font-weight: 700;
   font-size: 1.35em;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-shadow: 0 0 12px #2b7bff, 0 1px 0 #00021f;
   animation: taglineglow 3s ease-in-out infinite;
