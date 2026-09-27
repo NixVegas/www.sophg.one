@@ -20,13 +20,6 @@
   </head>
 
   <body>
-    {#
-      Two shapes of page inherit from here:
-        * sophgone.html overrides `body` outright -- it draws the whole SGC
-          console chrome and puts the section content inside it.
-        * index.html overrides only `content`, and gets the bare default.
-      Nesting `content` inside `body` lets both work without a second base.
-    #}
     {% block body %}{% block content %}{% endblock content %}{% endblock body %}
   </body>
 </html>
