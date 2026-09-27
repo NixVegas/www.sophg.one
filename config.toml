@@ -1,6 +1,6 @@
 # Zola config for https://sophg.one — the Sophgone SG-1 disclosure site.
 title = "Sophgone SG-1"
-description = "Coordinated disclosure: a mask-ROM BL2 stack overflow defeats secure boot on the Sophgo SG2000 / CV181x."
+description = "Mask-ROM BL2 stack overflow disclosure for the Sophgo SG2000 / CV181x"
 base_url = "https://sophg.one"
 
 # Compile sass/*.scss -> /*.css (partials are prefixed with _ and skipped).

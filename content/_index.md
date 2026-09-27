@@ -61,7 +61,7 @@ FIP format actually works instead of how the documentation says it does.
 ## Timeline
 
 - **2026-09-02:** proof of concept tested without secure boot
-- **2026-09-08:** proof of concept tested with secure boot and boot encryption
+- **2026-09-08:** proof of concept verified with secure boot and boot encryption
 - **2026-09-11:** writeup complete, Sophgo open source email contacted and CVE requested
 - **2026-09-21:** another email sent to Sophgo (security@ bounced)
 - **2026-09-27:** vendor unresponsive, released [at NixCon](https://talks.nixcon.org/nixcon-2026/me/submissions/LN8PXG/)
@@ -78,11 +78,20 @@ FIP format actually works instead of how the documentation says it does.
 
 ## Notes
 
-eMMC, SPINAND, and other boot modes are equally affected but will require a different
-stack map in order to work since the affected function is at a different stack depth.
-This demo was made for an SD card (hence the SD/... in the mask ROM boot line).
+- **What products are affected?** The NanoKVM (LicheeRV Nano) and similar products,
+  including the Milk-V Duo Module 01 and Milk-V Duo S. Anything that uses a Sophgo SG200x will be affected.
+- **What do I need to do?** If secure boot is important to your threat model, reassess your
+  use of this part. If you wanted to mess with fusing secure boot without risk of bricking your dev board,
+  maybe grab a LicheeRV Nano or similar device. They're neat little boards.
+  You will likely never brick it with Sophgone unless you somehow lock out SD card boot via the fuses.
+  Even if you do, you could probably still get around it with a modification to Sophgone.
+- **What boot modes are affected?** eMMC, SPINAND, and other boot modes are equally affected but
+  will require a different stack map in order to work since the affected function is at a different
+  stack depth. This demo was made for an SD card (hence the SD/... in the mask ROM boot line).
 
 ## Source
+
+Full-source disclosure is on GitHub:
 
 [https://github.com/NixVegas/sophgone](https://github.com/NixVegas/sophgone)
 
